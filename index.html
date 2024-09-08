@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rick and Morty API</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -14,14 +15,19 @@
         <p>Explora los personajes</p>
     </header>
     <main>
-        <section id="characters-container">
+        <section id="characters-container" data-aos="zoom-in-up" duration="2000">
             <!-- aqui muestro la informacion de todoas -->
+
         </section>
     </main>
     <footer>
         <p>&copy; 2024 - Rick and Morty</p>
     </footer>
     <script src="main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
