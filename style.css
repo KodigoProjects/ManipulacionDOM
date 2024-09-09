@@ -66,6 +66,29 @@ main {
     color: #555;
 }
 
+
+.btn-hide{
+    display: none;
+}
+
+.btn-show{
+    margin-top: 10px;
+    display:inline;
+    height: 30px;
+    background: #53ff11;
+    box-shadow: 2px 5px 5px black;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.btn-show:hover{
+    transform: scale(1.1);
+    box-shadow: 1px 2px 2px black;
+}
+
 footer {
     background-color: #282c34;
     color: white;
