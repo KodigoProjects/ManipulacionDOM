@@ -34,9 +34,34 @@ function Datos(characters) {
             <p>Status: ${character.status}</p>
             <p>Species: ${character.species}</p>
             <p>Location: ${character.location.name}</p>
+            <button class="btn-hide">Ver más información</button>
         `;
 
         contenedor.appendChild(Elementos);
+        const boton = Elementos.querySelector('.btn-hide');
+        boton.addEventListener('click', () => {
+            const personaje = character.name;
+            const direccion = `https://rickandmorty.fandom.com/wiki/${personaje}`; //Asigna el nombre de cada personaje a una busqueda
+            window.open(direccion, '_blank'); //Abre una nueva ventana para ver la información
+        });
+    });
+    mostrarBtnInfo();
+}
+function mostrarBtnInfo() { //Función que oculta y muestra el botón de redirección
+    const contenedor = document.querySelectorAll('.character');
+
+    contenedor.forEach(contenedor => {
+        const boton = contenedor.querySelector('.btn-hide');
+        
+        contenedor.addEventListener('mouseover', () => {
+            boton.classList.remove('btn-hide');
+            boton.classList.add('btn-show');
+        });
+
+        contenedor.addEventListener('mouseout', () => {
+            boton.classList.remove('btn-show');
+            boton.classList.add('btn-hide');
+        });
     });
 }
 
