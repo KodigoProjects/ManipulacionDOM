@@ -40,48 +40,54 @@ main {
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out; /*  transición */ 
+    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+    /*  transición */
     text-align: center;
 }
 
 .character:hover {
-    transform: scale(1.1) rotate(3deg); /* Añadi una rotacion  */ 
+    transform: scale(1.1) rotate(3deg);
+    /* Añadi una rotacion  */
     cursor: pointer;
     border: 2px solid #0e110f;
-    box-shadow: 0 0 20px #53ff11, 0 0 30px #53ff11, 0 0 40px #53ff11; /* Efecto de neón */  
+    box-shadow: 0 0 20px #53ff11, 0 0 30px #53ff11, 0 0 40px #53ff11;
+    /* Efecto de neón */
 }
 
 .character img {
     width: 100%;
     border-radius: 10px;
-    transition: transform 0.3s ease-in-out; /* efecto ala imagen */  
+    transition: transform 0.3s ease-in-out;
+    /* efecto ala imagen */
 }
-.character:hover img {  
-    transform: scale(1.1); /* Efecto de zoom */  
-}  
+
+.character:hover img {
+    transform: scale(1.1);
+    /* Efecto de zoom */
+}
 
 
 .character h3 {
     margin: 15px 0;
     font-size: 1.5rem;
     color: #282c34;
-   
+
 }
 
 .character p {
     margin: 5px 0;
     color: #555;
-   
+
 }
 
 
-.btn-hide{
+.btn-hide {
     display: none;
 }
 
-.btn-show{
+.btn-show {
     margin-top: 10px;
-    display:inline;
+    display: inline;
     height: 30px;
     background: #53ff11;
     box-shadow: 2px 5px 5px black;
@@ -92,7 +98,7 @@ main {
     font-size: 15px;
 }
 
-.btn-show:hover{
+.btn-show:hover {
     transform: scale(1.1);
     box-shadow: 1px 2px 2px black;
 }
@@ -106,5 +112,26 @@ footer {
 }
 
 footer p {
-    margin: 0; /**holis chicos*/
+    margin: 0;
+    /**holis chicos*/
+}
+
+/* para el inputd de busqueda */
+/* Estilo para el input de búsqueda */
+#search-input {
+    width: 50%;
+    max-width: 50%;
+    padding: 10px;
+    margin: 20px auto;
+    display: block;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+#search-input:focus {
+    border-color: #007bff;
+    outline: none;
 }

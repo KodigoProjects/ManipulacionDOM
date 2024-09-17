@@ -1,6 +1,7 @@
 const apiURL = 'https://rickandmortyapi.com/api/character';
+let allCharacters = []; // Variable global para guardar todos los personajes
 
-// obtengo los personakes
+// Obtengo los personajes
 async function traerPersonajes() {
     try {
         const response = await fetch(apiURL);
@@ -8,26 +9,23 @@ async function traerPersonajes() {
         (!response.ok) ? console.log('Error al obtener los personajes') : console.log('Personajes obtenidos');
         const data = await response.json();
 
-        Datos(data.results); //AQUI SE LOS PASO A LA FUNCION QUE LOS MUESTRA
+        allCharacters = data.results; // Guardo los personajes en la variable global
+        Datos(allCharacters); // Muestra los personajes
 
     } catch (error) {
         console.error(error);
     }
 }
 
-// esto es para mostrarlos en el dom
+// Función para mostrar personajes en el DOM
 function Datos(characters) {
-    // este es el id del contenedor donde se van a mostrar los personajes
     const contenedor = document.getElementById('characters-container');
-
-    contenedor.innerHTML = ''; // Limpiar el contenedor para meterrle los nuevos personajes
+    contenedor.innerHTML = ''; // Limpiar el contenedor
 
     characters.forEach(character => {
-
         const Elementos = document.createElement('div');
-        Elementos.classList.add('character'); //le agrego una calse a ese div precioso que hice
+        Elementos.classList.add('character');
 
-        //dentro del div agrego las cosas y listo
         Elementos.innerHTML = `
             <img src="${character.image}" alt="${character.name}" />
             <h3>${character.name}</h3>
@@ -41,18 +39,20 @@ function Datos(characters) {
         const boton = Elementos.querySelector('.btn-hide');
         boton.addEventListener('click', () => {
             const personaje = character.name;
-            const direccion = `https://rickandmorty.fandom.com/wiki/${personaje}`; //Asigna el nombre de cada personaje a una busqueda
-            window.open(direccion, '_blank'); //Abre una nueva ventana para ver la información
+            const direccion = `https://rickandmorty.fandom.com/wiki/${personaje}`;
+            window.open(direccion, '_blank');
         });
     });
     mostrarBtnInfo();
 }
-function mostrarBtnInfo() { //Función que oculta y muestra el botón de redirección
+
+// Función para mostrar y ocultar el botón de información
+function mostrarBtnInfo() {
     const contenedor = document.querySelectorAll('.character');
 
     contenedor.forEach(contenedor => {
         const boton = contenedor.querySelector('.btn-hide');
-        
+
         contenedor.addEventListener('mouseover', () => {
             boton.classList.remove('btn-hide');
             boton.classList.add('btn-show');
@@ -64,5 +64,16 @@ function mostrarBtnInfo() { //Función que oculta y muestra el botón de redirec
         });
     });
 }
+
+// Filtra los personajes basados en el texto ingresado en el input
+function buscarPersonajes() {
+    const input = document.getElementById('search-input');
+    const filtro = input.value.toLowerCase();
+    const personajesFiltrados = allCharacters.filter(character => character.name.toLowerCase().includes(filtro));
+    Datos(personajesFiltrados);
+}
+
+// Escucha el evento input para búsqueda en tiempo real
+document.getElementById('search-input').addEventListener('input', buscarPersonajes);
 
 traerPersonajes();
